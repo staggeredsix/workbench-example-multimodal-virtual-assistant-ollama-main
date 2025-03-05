@@ -27,7 +27,8 @@ import sys
 
 from chatui import assets, chat_client
 from chatui.prompts import prompts_llama3, prompts_mistral, defaults
-from chatui_public.utils import compile, database, logger, ollama
+from chatui_public.utils import compile, database, logger
+from utils import ollama
 
 from langgraph.graph import END, StateGraph
 
@@ -388,6 +389,18 @@ def build_page(client: chat_client.ChatClient) -> gr.Blocks:
                                                                   interactive=True)
                         
                     # Ollama Configuration Tab
+                    router_use_nim = gr.State(False)
+                    retrieval_use_nim = gr.State(False)
+                    generator_use_nim = gr.State(False)
+                    hallucination_use_nim = gr.State(False)
+                    answer_use_nim = gr.State(False)
+                    initialized = gr.State(False)
+                    use_ollama_state = gr.State(False)  # ADD HERE
+                    ollama_server_state = gr.State("http://localhost")
+                    ollama_port_state = gr.State("11434") 
+                    ollama_model_state = gr.State("llama3")
+
+                    # Then in the Ollama tab section
                     with gr.TabItem("Ollama", id=3, interactive=False, visible=False) as ollama_settings:
                         gr.Markdown("## Ollama Configuration")
                         gr.Markdown("Configure Ollama settings to use local or remote Ollama models")
