@@ -1,0 +1,70 @@
+{
+  "context": {
+    "file_patterns": [
+      "**/*.{c,cu,h,cpp,hpp,cxx,hxx,java,py,rb,scss,sass,less,css,js,jsx,ts,tsx,html,htm,php,pl,pm,pod,y,r,sql,yml,yaml,toml,md,tex}"
+    ],
+    "ignore_patterns": [
+      ".*,node_modules,vendor,build,dist,target"
+    ],
+    "enable_git_ignore": true
+  },
+  "modelProps": {
+    "temperature": 0.2,
+    "top_p": 0.7,
+    "max_tokens": 1024,
+    "seed": 42
+  },
+  "models": [
+    {
+      "id": "mixtral",
+      "title": "Mixtral 8x22B Instruct",
+      "api": "mistralai/mixtral-8x22b-instruct-v0.1",
+      "default": true
+    },
+    {
+      "id": "mixtral_7b",
+      "title": "Mixtral 8x7B Instruct",
+      "api": "mistralai/mixtral-8x7b-instruct-v0.1"
+    },
+    {
+      "id": "llama3_70b",
+      "title": "Code Llama v3 70B Instruct",
+      "api": "meta/llama3-70b-instruct"
+    },
+    {
+      "id": "llama3_8b",
+      "title": "Code Llama v3 8B Instruct",
+      "api": "meta/llama3-8b-instruct"
+    },
+    {
+      "id": "llama2_70b",
+      "title": "Code Llama v2 70B Instruct",
+      "api": "meta/llama2-70b"
+    },
+    {
+      "id": "codegemma_7b",
+      "title": "Code Gemma 7b",
+      "api": "google/codegemma-7b"
+    },
+    {
+      "id": "gemma_7b",
+      "title": "Gemma 7b",
+      "api": "google/gemma-7b"
+    },
+    {
+      "id": "gemma_2b",
+      "title": "Gemma 2b",
+      "api": "google/gemma-2b"
+    }
+  ],
+  "prompts": {
+    "system": "You are an expert coding assistant that writes minimal yet well documented code in a wide range of programming languages",
+    "comment_code": "You are an expert coder with experience working with all programming languages. Please create a new version of this code with detailed comments.",
+    "fix_code": "You are an expert coding assistant that writes minimal yet well documented code in a wide range of programming languages. Fix this code.",
+    "optimize_code": "You are an expert coding assistant that writes minimal yet well documented code in a wide range of programming languages. Add TODO comments to this code wherever you see ways to improve it.",
+    "complete_code": "You are an expert coder with experience working with all programming languages. Please complete this code snippet.",
+    "refactor_code": "You are working with this file {{filename}}. You need to generate an updated block of code to exactly replace the block that the user gives you in the message.",
+    "file_context": "You are working with this file \"{{filename}}\" which has this code: ```\n{{contents}}\n```",
+    "rag_context": "We found the following code examples in the project that might be useful for generating this code. These code examples are JSON objects that include a filename, description, and code snippet: {{examples}}"
+  }
+}
