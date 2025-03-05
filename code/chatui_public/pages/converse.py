@@ -387,18 +387,9 @@ def build_page(client: chat_client.ChatClient) -> gr.Blocks:
                                                                   lines=17,
                                                                   show_label=False,
                                                                   interactive=True)
-                        
+                       
                     # Ollama Configuration Tab
-                    router_use_nim = gr.State(False)
-                    retrieval_use_nim = gr.State(False)
-                    generator_use_nim = gr.State(False)
-                    hallucination_use_nim = gr.State(False)
-                    answer_use_nim = gr.State(False)
-                    initialized = gr.State(False)
-                    use_ollama_state = gr.State(False)  # ADD HERE
-                    ollama_server_state = gr.State("http://localhost")
-                    ollama_port_state = gr.State("11434") 
-                    ollama_model_state = gr.State("llama3")
+
 
                     # Then in the Ollama tab section
                     with gr.TabItem("Ollama", id=3, interactive=False, visible=False) as ollama_settings:
@@ -456,8 +447,7 @@ def build_page(client: chat_client.ChatClient) -> gr.Blocks:
 
                     # Second tab item is for uploading to and clearing the vector database
                     # Ollama Configuration Tab
-                    with gr.TabItem("Ollama", id=3, interactive=False, visible=False) as ollama_settings:
-                        gr.Markdown("## Ollama Configuration")
+                    
                     with gr.TabItem("Database", id=4, interactive=False, visible=False) as document_settings:
                         gr.Markdown("")
                         gr.Markdown("Upload webpages, pdfs, images, and videos to the vector store.<br />**Note:** Clearing docs will empty the database!\n")
@@ -1162,11 +1152,11 @@ def build_page(client: chat_client.ChatClient) -> gr.Blocks:
             except Exception as e:
                 gr.Warning("Video file upload failed, try again later. Exception: " + str(e))
                 return {
-                    url_docs_clear: gr.update(value="Clear Docs", variant="secondary", interactive=True),
-                    file_upload_clear: gr.update(value="Clear Docs", variant="secondary", interactive=True),
-                    url_videos_clear: gr.update(value="Clear Docs", variant="secondary", interactive=True),
-                    agentic_flow: gr.update(visible=True),
-                }
+                url_docs_clear: gr.update(value="Clear Docs", variant="secondary", interactive=True),
+                file_upload_clear: gr.update(value="Clear Docs", variant="secondary", interactive=True),
+                url_videos_clear: gr.update(value="Clear Docs", variant="secondary", interactive=True),
+                agentic_flow: gr.update(visible=True),
+            }
             progress(0.75, desc="Cleaning Up")
             time.sleep(0.75)
             # Dictionary
