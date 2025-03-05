@@ -27,7 +27,7 @@ import sys
 
 from chatui import assets, chat_client
 from chatui.prompts import prompts_llama3, prompts_mistral, defaults
-from chatui.utils import compile, database, logger, ollama
+from chatui_public.utils import compile, database, logger, ollama
 
 
 from langgraph.graph import END, StateGraph
@@ -1155,6 +1155,10 @@ def build_page(client: chat_client.ChatClient) -> gr.Blocks:
                                nim_retrieval_id,
                                nim_hallucination_id,
                                nim_answer_id,
+                               use_ollama_state,  # Add this
+                               ollama_server_state,  # Add this
+                               ollama_port_state,  # Add this
+                               ollama_model_state,  # Add this
                                chatbot], [msg, chatbot, actions]
         )
 
@@ -1190,6 +1194,10 @@ def build_page(client: chat_client.ChatClient) -> gr.Blocks:
                                nim_retrieval_id,
                                nim_hallucination_id,
                                nim_answer_id,
+                               use_ollama_state,  # Add this
+                               ollama_server_state,  # Add this
+                               ollama_port_state,  # Add this
+                               ollama_model_state,  # Add this
                                chatbot], [msg, chatbot, actions]
         )
 
@@ -1225,6 +1233,10 @@ def build_page(client: chat_client.ChatClient) -> gr.Blocks:
                                nim_retrieval_id,
                                nim_hallucination_id,
                                nim_answer_id,
+                               use_ollama_state,  # Add this
+                               ollama_server_state,  # Add this
+                               ollama_port_state,  # Add this
+                               ollama_model_state,  # Add this
                                chatbot], [msg, chatbot, actions]
         )
 
@@ -1260,6 +1272,10 @@ def build_page(client: chat_client.ChatClient) -> gr.Blocks:
                                nim_retrieval_id,
                                nim_hallucination_id,
                                nim_answer_id,
+                               use_ollama_state,  # Add this
+                               ollama_server_state,  # Add this
+                               ollama_port_state,  # Add this
+                               ollama_model_state,  # Add this
                                chatbot], [msg, chatbot, actions]
         )
 
@@ -1434,6 +1450,10 @@ def _stream_predict(
               "nim_retrieval_id": nim_retrieval_id,
               "nim_hallucination_id": nim_hallucination_id,
               "nim_answer_id": nim_answer_id,
+              "use_ollama": use_ollama,
+              "ollama_server": ollama_server,
+              "ollama_port": ollama_port,
+              "ollama_model": ollama_model,
               "use_ollama": use_ollama,
               "ollama_server": ollama_server,
               "ollama_port": ollama_port,
