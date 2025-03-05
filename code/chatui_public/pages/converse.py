@@ -1155,10 +1155,6 @@ def build_page(client: chat_client.ChatClient) -> gr.Blocks:
                                nim_retrieval_id,
                                nim_hallucination_id,
                                nim_answer_id,
-                               use_ollama_state,
-                               ollama_server_state,
-                               ollama_port_state,
-                               ollama_model_state,
                                chatbot], [msg, chatbot, actions]
         )
 
