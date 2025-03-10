@@ -13,3 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Import and re-export individual modules
+from . import database
+from . import compile
+from . import logger
+from . import nim
+from .. import ollama
+
+# Define what's available when doing 'from chatui.utils import *'
+__all__ = ['database', 'compile', 'logger', 'nim', 'ollama']

@@ -18,7 +18,7 @@ from . import database
 from . import compile
 from . import logger
 from . import nim
-from . import ollama
+from .. import ollama
 
 # Define what's available when doing 'from chatui.utils import *'
 __all__ = ['database', 'compile', 'logger', 'nim', 'ollama']
