@@ -1410,7 +1410,17 @@ def build_page(client: chat_client.ChatClient) -> gr.Blocks:
                             ollama_model_state,
                             chatbot], [msg, chatbot, actions]
         )
+        use_ollama.change(_update_ollama_state, [use_ollama, ollama_server, ollama_port, ollama_model], 
+                 [use_ollama_state, ollama_server_state, ollama_port_state, ollama_model_state])
+        ollama_server.change(_update_ollama_state, [use_ollama, ollama_server, ollama_port, ollama_model], 
+                            [use_ollama_state, ollama_server_state, ollama_port_state, ollama_model_state])
+        ollama_port.change(_update_ollama_state, [use_ollama, ollama_server, ollama_port, ollama_model], 
+                        [use_ollama_state, ollama_server_state, ollama_port_state, ollama_model_state])
+        ollama_model.change(_update_ollama_state, [use_ollama, ollama_server, ollama_port, ollama_model], 
+                        [use_ollama_state, ollama_server_state, ollama_port_state, ollama_model_state])
 
+        refresh_ollama_models.click(_refresh_ollama_models, [ollama_server, ollama_port], [available_models])
+        available_models.change(lambda x: x, [available_models], [ollama_model])
     page.queue()
     return page
 
@@ -1457,17 +1467,7 @@ def _update_ollama_state(use_ollama_val, server, port, model):
     return use_ollama_val, server, port, model
     
 # Connect Ollama UI components to functions
-use_ollama.change(_update_ollama_state, [use_ollama, ollama_server, ollama_port, ollama_model], 
-                 [use_ollama_state, ollama_server_state, ollama_port_state, ollama_model_state])
-ollama_server.change(_update_ollama_state, [use_ollama, ollama_server, ollama_port, ollama_model], 
-                    [use_ollama_state, ollama_server_state, ollama_port_state, ollama_model_state])
-ollama_port.change(_update_ollama_state, [use_ollama, ollama_server, ollama_port, ollama_model], 
-                  [use_ollama_state, ollama_server_state, ollama_port_state, ollama_model_state])
-ollama_model.change(_update_ollama_state, [use_ollama, ollama_server, ollama_port, ollama_model], 
-                   [use_ollama_state, ollama_server_state, ollama_port_state, ollama_model_state])
 
-refresh_ollama_models.click(_refresh_ollama_models, [ollama_server, ollama_port], [available_models])
-available_models.change(lambda x: x, [available_models], [ollama_model])
 
 def _handle_pull_model(server, port, model_name):
     status, models_update = _pull_ollama_model(server, port, model_name)
