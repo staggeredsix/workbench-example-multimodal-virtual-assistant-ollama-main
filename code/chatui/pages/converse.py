@@ -18,6 +18,7 @@
 import functools
 from typing import Any, Dict, List, Tuple, Union
 
+
 import gradio as gr
 import shutil
 import os
@@ -1331,7 +1332,7 @@ def valid_input(query: str):
 # Ollama functionality
 def _refresh_ollama_models(server, port):
     try:
-        from chatui.utils.ollama import OllamaChatModel
+        from code.chatui.utils.ollama_integration import OllamaChatModel
         ollama_client = OllamaChatModel(ollama_server=server, ollama_port=port)
         models = ollama_client.list_models()
         
@@ -1347,7 +1348,7 @@ def _refresh_ollama_models(server, port):
 
 def _pull_ollama_model(server, port, model_name):
     try:
-        from chatui.utils.ollama import OllamaChatModel
+        from code.chatui.utils.ollama_integration import OllamaChatModel
         ollama_client = OllamaChatModel(ollama_server=server, ollama_port=port)
         success = ollama_client.pull_model(model_name)
         
